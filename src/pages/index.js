@@ -131,13 +131,7 @@ export const query = graphql`
     file(relativePath: { eq: "hero.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1600) {
-          base64
-          aspectRatio
-          src
-          srcSet
-          srcWebp
-          srcSetWebp
-          sizes
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
