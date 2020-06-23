@@ -1,13 +1,17 @@
 import React from "react"
+import { graphql } from "gatsby"
+import Img from 'gatsby-image'
 
-export default function Home() {
+// ページコンポーネントでのクエリの結果は、dataプロパティに返ってくるから、
+// コンポーネントに渡してそこからfluidのデータを取り出してgatsby-imageのコンポーネントに渡す
+export default ({ data }) => {
   return (
     <div>
       <header className="header">
         <div className="container">
           <div className="site">
             <a href="base-index.html">
-              <img src="/images/logo.svg" alt="ESSENTIALS" />
+              <img fluid={data.file.childImageSharp.fluid} alt='' />
             </a>
           </div>
           <nav className="nav">
@@ -121,3 +125,21 @@ export default function Home() {
     </div>
   )
 }
+
+export const query = graphql`
+  query {
+    file(relativePath: { eq: "hero.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1600) {
+          base64
+          aspectRatio
+          src
+          srcSet
+          srcWebp
+          srcSetWebp
+          sizes
+        }
+      }
+    }
+  }
+`
