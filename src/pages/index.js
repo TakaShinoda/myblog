@@ -1,15 +1,13 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
-import { Header } from "../components/header"
-import { Footer } from '../components/Footer'
+import { Layout } from "../components/Layout"
 
 // ページコンポーネントでのクエリの結果は、dataプロパティに返ってくるから、
 // コンポーネントに渡してそこからfluidのデータを取り出してgatsby-imageのコンポーネントに渡す
 export default ({ data }) => {
   return (
-    <div>
-      <Header />
+    <Layout>
       <section className="hero">
         <figure>
           <Img
@@ -94,8 +92,7 @@ export default ({ data }) => {
           />
         </figure>
       </section>
-      <Footer />
-    </div>
+    </Layout>
   )
 }
 
