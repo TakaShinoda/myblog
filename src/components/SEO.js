@@ -11,14 +11,20 @@ export const SEO = props => {
           lang
           title
           siteUrl
+          locale
+          # fbappid
         }
       }
     }
   `)
 
-  const title = props.pagetitle ? `${props.pagetitle} | ${data.site.siteMetadata.title}` : data.site.siteMetadata.title
+  const title = props.pagetitle
+    ? `${props.pagetitle} | ${data.site.siteMetadata.title}`
+    : data.site.siteMetadata.title
   const description = props.pagedesc || data.site.siteMetadata.description
-  const url = props.pagepath ? `${data.site.siteMetadata.siteUrl}${props.pagepath}` : data.site.siteMetadata.siteUrl
+  const url = props.pagepath
+    ? `${data.site.siteMetadata.siteUrl}${props.pagepath}`
+    : data.site.siteMetadata.siteUrl
 
   return (
     <Helmet>
@@ -26,6 +32,13 @@ export const SEO = props => {
       <title>{title}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={url} />
+      <meta property="ob:site_name" content={data.site.siteMetadata.title} />
+      <meta property="ob:title" content={title} />
+      <meta property="ob:description" content={description} />
+      <meta property="ob:url" content={url} />
+      <meta property="ob:type" content="website" />
+      <meta property="ob:locale" content={data.site.siteMetadata.locale} />
+      {/* <meta property="fb:app_id" content={data.site.siteMetadata.fbappid} /> */}
     </Helmet>
   )
 }
