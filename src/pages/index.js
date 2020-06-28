@@ -2,12 +2,14 @@ import React from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import { Layout } from "../components/Layout"
+import { SEO } from "../components/SEO"
 
 // ページコンポーネントでのクエリの結果は、dataプロパティに返ってくるから、
 // コンポーネントに渡してそこからfluidのデータを取り出してgatsby-imageのコンポーネントに渡す
 export default ({ data }) => {
   return (
     <Layout>
+      <SEO />
       <section className="hero">
         <figure>
           <Img
