@@ -1,6 +1,8 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faTwitter, faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons"
 
 export const Footer = () => {
   const data = useStaticQuery(graphql`
@@ -38,19 +40,19 @@ export const Footer = () => {
         <ul className="sns">
           <li>
             <a href="https://twitter.com/">
-              <i className="fab fa-twitter" />
+              <FontAwesomeIcon icon={faTwitter} />
               <span className="sr-only">Twitter</span>
             </a>
           </li>
           <li>
             <a href="https://facebook.com/">
-              <i className="fab fa-facebook-square" />
+              <FontAwesomeIcon icon={faFacebook} />
               <span className="sr-only">Facebook</span>
             </a>
           </li>
           <li>
             <a href="http://instagram.com/">
-              <i className="fab fa-instagram" />
+              <FontAwesomeIcon icon={faInstagram} />
               <span className="sr-only">Instagram</span>
             </a>
           </li>
