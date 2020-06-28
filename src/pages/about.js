@@ -8,12 +8,14 @@ import { SEO } from "../components/SEO"
 
 // ページコンポーネントでのクエリの結果は、dataプロパティに返ってくるから、
 // コンポーネントに渡してそこからfluidのデータを取り出してgatsby-imageのコンポーネントに渡す
-export default ({ data }) => {
+export default ({ data, location }) => {
   return (
     <Layout>
       <SEO
         pagetitle="ESSENTIALSについて"
         pagedesc="食べ物についての情報を発信しているサイトです。"
+        // location.pathnameで/about/を取得
+        pagepath={location.pathname}
       />
       <div className="eyecatch">
         <figure>

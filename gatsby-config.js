@@ -13,6 +13,9 @@ module.exports = {
     title: `ESSENTIALS`,
     description: `おいしい食材と食事を探すサイト`,
     lang: `ja`,
+    siteUrl: `https://ts621-blog.netlify.app/`,
+    locale: `ja-JP`,
+    // fbappid: `hoge`
   },
   plugins: [
     `gatsby-transformer-sharp`,
