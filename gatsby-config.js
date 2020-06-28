@@ -13,6 +13,7 @@ module.exports = {
     title: `ESSENTIALS`,
     description: `おいしい食材と食事を探すサイト`,
     lang: `ja`,
+    siteUrl: `https://ts621-blog.netlify.app/`,
   },
   plugins: [
     `gatsby-transformer-sharp`,
