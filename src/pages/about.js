@@ -2,6 +2,8 @@ import React from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import { Layout } from "../components/Layout"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faUtensils, faCheckSquare } from "@fortawesome/free-solid-svg-icons"
 
 // ページコンポーネントでのクエリの結果は、dataプロパティに返ってくるから、
 // コンポーネントに渡してそこからfluidのデータを取り出してgatsby-imageのコンポーネントに渡す
@@ -23,7 +25,7 @@ export default ({ data }) => {
 
           <aside className="info">
             <div className="subtitle">
-              <i className="fas fa-utensils" />
+              <FontAwesomeIcon icon={faUtensils} />
               ABOUT ESSENTIALS
             </div>
           </aside>
@@ -34,7 +36,8 @@ export default ({ data }) => {
             </p>
 
             <h2>
-              <i className="fas fa-check-square"></i>公開している記事
+              <FontAwesomeIcon icon={faCheckSquare} />
+              公開している記事
             </h2>
 
             <p>
@@ -50,7 +53,8 @@ export default ({ data }) => {
             </ul>
 
             <h2>
-              <i className="fas fa-check-square"></i>よく聞かれること
+              <FontAwesomeIcon icon={faCheckSquare} />
+              よく聞かれること
             </h2>
 
             <p>
