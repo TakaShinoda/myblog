@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import { Layout } from "../components/Layout"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faClock, faFolderOpen } from "@fortawesome/free-regular-svg-icons"
-import {faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons"
+import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons"
 
 export default ({ data }) => (
   <Layout>
@@ -26,8 +26,11 @@ export default ({ data }) => (
           <div className="cat">
             <FontAwesomeIcon icon={faFolderOpen} />
             <ul>
-              <li className="スラッグ">カテゴリーＡ</li>
-              <li className="スラッグ">カテゴリーＢ</li>
+              {data.contentfulBlogPost.category.map(cat => (
+                <li className={cat.categorySlug} key={cat.id}>
+                  {cat.category}
+                </li>
+              ))}
             </ul>
           </div>
         </aside>
@@ -65,6 +68,11 @@ export const query = graphql`
       title
       publishDateJP: publishDate(formatString: "YYYY年MM月DD日")
       publishDate
+      category {
+        category
+        categorySlug
+        id
+      }
     }
   }
 `
