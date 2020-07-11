@@ -5,6 +5,7 @@ import { Layout } from "../components/Layout"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faClock, faFolderOpen } from "@fortawesome/free-regular-svg-icons"
 import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons"
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
 export default ({ data }) => (
   <Layout>
@@ -40,11 +41,7 @@ export default ({ data }) => (
         </aside>
 
         <div className="postbody">
-          <p>
-            記事の本文です。記事の本文です。記事の本文です。記事の本文です。記事の本文です。
-            記事の本文です。記事の本文です。記事の本文です。記事の本文です。記事の本文です。
-            記事の本文です。記事の本文です。記事の本文です。記事の本文です。記事の本文です。
-          </p>
+          {documentToReactComponents(data.contentfulBlogPost.content.json)}
         </div>
 
         <ul className="postlink">
@@ -84,6 +81,9 @@ export const query = graphql`
         }
         description
       }
+      content {
+      json
+    }
     }
   }
 `
