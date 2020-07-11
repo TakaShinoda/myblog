@@ -12,7 +12,7 @@ export default ({ data }) => (
       <figure>
         <Img
           fluid={data.contentfulBlogPost.eyecatch.fluid}
-          alt="アイキャッチ画像の説明"
+          alt={data.contentfulBlogPost.eyecatch.description}
         />
       </figure>
     </div>
@@ -82,6 +82,7 @@ export const query = graphql`
           # Fragment
           ...GatsbyContentfulFluid_withWebp 
         }
+        description
       }
     }
   }
