@@ -7,6 +7,7 @@ import { faClock, faFolderOpen } from "@fortawesome/free-regular-svg-icons"
 import { faChevronLeft, faChevronRight, faCheckSquare } from "@fortawesome/free-solid-svg-icons"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { BLOCKS } from "@contentful/rich-text-types"
+import useContentfulImage from "../utils/useContentfulImage"
 
 // documentToReactComponentsのレンダリングをカスタマイズする設定
 const options = {
@@ -18,8 +19,8 @@ const options = {
       </h2>
     ),
     [BLOCKS.EMBEDDED_ASSET]: node => (
-      <img
-        src={node.data.target.fields.file["ja-JP"].url}
+      <Img
+        fluid={useContentfulImage(node.data.target.fields.file["ja-JP"].url)}
         alt={
           node.data.target.fields.description
             ? node.data.target.fields.description["ja-JP"]
@@ -62,7 +63,7 @@ export default ({ data }) => (
             </ul>
           </div>
         </aside>
-        
+
         <div className="postbody">
           {documentToReactComponents(
             data.contentfulBlogPost.content.json,
