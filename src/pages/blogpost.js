@@ -1,11 +1,24 @@
-import React from "react"
+import React, { Children } from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import { Layout } from "../components/Layout"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faClock, faFolderOpen } from "@fortawesome/free-regular-svg-icons"
-import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons"
+import { faChevronLeft, faChevronRight, faCheckSquare } from "@fortawesome/free-solid-svg-icons"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+import { BLOCKS } from "@contentful/rich-text-types"
+
+// documentToReactComponentsのレンダリングをカスタマイズする設定
+const options = {
+  renderNode: {
+    [BLOCKS.HEADING_2]: (node, children) => (
+      <h2>
+        <FontAwesomeIcon icon={faCheckSquare} />
+        {children}
+      </h2>
+    )
+  }
+}
 
 export default ({ data }) => (
   <Layout>
@@ -41,7 +54,7 @@ export default ({ data }) => (
         </aside>
 
         <div className="postbody">
-          {documentToReactComponents(data.contentfulBlogPost.content.json)}
+          {documentToReactComponents(data.contentfulBlogPost.content.json, options)}
         </div>
 
         <ul className="postlink">
