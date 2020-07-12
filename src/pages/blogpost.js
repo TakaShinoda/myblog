@@ -1,4 +1,4 @@
-import React, { Children } from "react"
+import React from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import { Layout } from "../components/Layout"
@@ -16,8 +16,18 @@ const options = {
         <FontAwesomeIcon icon={faCheckSquare} />
         {children}
       </h2>
-    )
-  }
+    ),
+    [BLOCKS.EMBEDDED_ASSET]: node => (
+      <img
+        src={node.data.target.fields.file["ja-JP"].url}
+        alt={
+          node.data.target.fields.description
+            ? node.data.target.fields.description["ja-JP"]
+            : node.data.target.fields.title["ja-JP"]
+        }
+      />
+    ),
+  },
 }
 
 export default ({ data }) => (
@@ -52,9 +62,12 @@ export default ({ data }) => (
             </ul>
           </div>
         </aside>
-
+        
         <div className="postbody">
-          {documentToReactComponents(data.contentfulBlogPost.content.json, options)}
+          {documentToReactComponents(
+            data.contentfulBlogPost.content.json,
+            options
+          )}
         </div>
 
         <ul className="postlink">
@@ -90,13 +103,13 @@ export const query = graphql`
       eyecatch {
         fluid(maxWidth: 1600) {
           # Fragment
-          ...GatsbyContentfulFluid_withWebp 
+          ...GatsbyContentfulFluid_withWebp
         }
         description
       }
       content {
-      json
-    }
+        json
+      }
     }
   }
 `
